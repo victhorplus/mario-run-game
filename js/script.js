@@ -11,9 +11,13 @@ function loop(){
 }
 
 function keyboardEvents(event){
+    console.log(event.code.toLowerCase())
     switch(event.code.toLowerCase()){
         case 'space':
             jumpEvent();
+            break;
+        case 'enter':
+            reestart();
             break;
     }
 }
@@ -56,10 +60,11 @@ function marioColision(){
 function stopGame(){
     let mario = document.querySelector(".mario");
     let pipe = document.querySelector(".pipe");
-    let pipePosition = window.getComputedStyle(pipe).left;
+    let cloud = document.querySelector(".clouds");
 
-    clearClass(pipe, "pipe--move", 0);
-    pipe.style.left = pipePosition;
+    pipe.style.animationPlayState = "paused"
+    cloud.style.animationPlayState = "paused"
+    mario.style.animationPlayState = "paused"
     mario.src = "assets/mario-stopped.gif";
     clearInterval(interval)
 }
@@ -69,4 +74,20 @@ function gameOver(){
     mario.src = "assets/game-over.png";
     mario.style.width = "65px";
     mario.style.left = "40px"
+}
+
+function reestart(){
+    let mario = document.querySelector(".mario");
+    let pipe = document.querySelector(".pipe");
+    let cloud = document.querySelector(".clouds");
+
+    mario.style.animationPlayState = "running";
+    pipe.style.animationPlayState = "running";
+    cloud.style.animationPlayState = "running";
+
+    mario.src = "assets/mario.gif";
+    mario.style.width = "120px";
+    mario.style.left = "0px"
+
+    interval = setInterval(loop, 50);
 }

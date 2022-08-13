@@ -5,9 +5,9 @@
 .main{
     position: relative;
     margin: auto;
-    width: 1000px;
+    width: 100%;
     height: 500px;
-    border-bottom: solid 10px rgb(35, 160, 35);
+    border-bottom: solid 20px rgb(35, 160, 35);
     overflow: hidden;
     background: linear-gradient(#87CEEB, #E0F6FF);
 }
