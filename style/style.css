@@ -7,8 +7,9 @@
     margin: auto;
     width: 1000px;
     height: 500px;
-    border: solid 1px #000;
+    border-bottom: solid 10px rgb(35, 160, 35);
     overflow: hidden;
+    background: linear-gradient(#87CEEB, #E0F6FF);
 }
 
 .pipe{
@@ -17,7 +18,7 @@
     width: 80px;
 }
 .pipe--move{
-    animation: pipe-animation 3s infinite linear;
+    animation: pipe-animation 2s infinite linear;
 }
 
 .mario{
@@ -27,6 +28,16 @@
 }
 .mario--jump{
     animation: mario-jump-animation 0.7s ease-out;
+}
+
+.clouds{
+    position: absolute;
+    top: 50px;
+    width: 500px;
+}
+
+.clouds--move{
+    animation: clouds-move-animation 20s infinite linear;
 }
 
 @keyframes pipe-animation {
@@ -54,5 +65,15 @@
 
     100% {
         bottom: 0;
+    }
+}
+
+@keyframes clouds-move-animation {
+    from {
+        right: -500px;
+    }
+
+    to {
+        right: 100%;
     }
 }
