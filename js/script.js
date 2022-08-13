@@ -33,15 +33,20 @@ function clearClass(pipe, classe, timeOut){
 function marioColision(){
     let mario = document.querySelector(".mario");
     let pipe = document.querySelector(".pipe");
+    marioPosition = mario.getBoundingClientRect();
+    pipePosition = pipe.getBoundingClientRect();
+
+    // Colisões do ponto de vista do Mario
+    let rightCollision = marioPosition.left <= pipePosition.left && marioPosition.right >= pipePosition.left;
+    let leftCollision = marioPosition.left <= pipePosition.right && marioPosition.right >= pipePosition.right;
+    let topCollision = marioPosition.top <= pipePosition.bottom && marioPosition.bottom >= pipePosition.bottom;
+    let bottomCollision = marioPosition.top <= pipePosition.top && marioPosition.bottom >= pipePosition.top;
+
     if(
-        // Verifica se a esquerda do objeto está colidindo com o Mario
-        (pipe.getBoundingClientRect().left >= mario.getBoundingClientRect().left && pipe.getBoundingClientRect().left <= mario.getBoundingClientRect().right) &&
-        // Verifica se a direita do objeto está colidindo com o Mario (inútil)
-        (pipe.getBoundingClientRect().right >= mario.getBoundingClientRect().left && pipe.getBoundingClientRect().right <= mario.getBoundingClientRect().right) &&
-        // Verifica se o topo do objeto está colidindo com o Mario
-        (pipe.getBoundingClientRect().top <= mario.getBoundingClientRect().bottom && pipe.getBoundingClientRect().top >= mario.getBoundingClientRect().top) &&
-        // Verifica se a parte de baixo do obejto está colidindo com o mario
-        (pipe.getBoundingClientRect().bottom <= mario.getBoundingClientRect().bottom && pipe.getBoundingClientRect().bottom >= mario.getBoundingClientRect().top)
+        (rightCollision && bottomCollision && topCollision) ||
+        (leftCollision && bottomCollision && topCollision) ||
+        (bottomCollision && rightCollision && leftCollision) ||
+        (topCollision && rightCollision && leftCollision)
     ){
         stopGame();
         gameOver();
@@ -62,5 +67,6 @@ function stopGame(){
 function gameOver(){
     let mario = document.querySelector(".mario");
     mario.src = "assets/game-over.png";
-    mario.style.width = "70px";
+    mario.style.width = "65px";
+    mario.style.left = "40px"
 }
