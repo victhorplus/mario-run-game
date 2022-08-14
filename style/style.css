@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
 *{
     margin: 0px;
     padding: 0px;
@@ -11,6 +13,23 @@
     overflow: hidden;
     background: linear-gradient(#87CEEB, #E0F6FF);
 }
+.score{
+    position: absolute;
+    margin: 10px;
+    font-size: 40px;
+    font-family: 'Silkscreen', cursive;
+    background-image: linear-gradient(#fffdfd, #ffd7c7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.score_shadow{
+    position: absolute;
+    margin: 12px 12px 10px 8px;
+    font-size: 40px;
+    font-family: 'Silkscreen', cursive;
+}
 
 .pipe{
     position: absolute;
@@ -18,7 +37,7 @@
     width: 80px;
 }
 .pipe--move{
-    animation: pipe-animation 2s infinite linear;
+    animation: pipe-animation 3s infinite linear;
 }
 
 .mario{
