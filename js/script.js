@@ -66,7 +66,7 @@ function marioColision(){
 function detectPoint(){
     let pipe = document.querySelector(".pipe");
     let pipePosition = +getComputedStyle(pipe).left.replace("px", "")
-    if(pipePosition < -47 && pipePosition > -55){
+    if(pipePosition < -47 && pipePosition > -60){
         STATE_GAME.score++;
     }
     setScore(STATE_GAME.score)
